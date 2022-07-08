@@ -1,3 +1,7 @@
+/* =================== */
+/*     * * * * * *     */
+/* =================== */
+
 * {
   margin: 0;
   padding: 0;
@@ -16,8 +20,8 @@ body {
 
 .outer {
   margin: 4em auto;
-  width: 60%;
-  max-height: 85vh;
+  width: 45em;
+  height: 34em;
   padding: 10px;
   background: #afaea1;
   display: flex;
@@ -34,7 +38,7 @@ body {
   border-radius: 11px;
 }
 
-.upper-display {
+.top-display {
   font-size: 18px;
   margin-bottom: 5px;
   height: 1em;
@@ -43,11 +47,17 @@ body {
 }
 
 .main-display {
-  font-size: 36px;
+  font-size: 40px;
+  font-weight: 500;
+  letter-spacing: 3px;
   height: 1.25em;
   text-align: end;
   padding-right: 10px;
 }
+
+/* =================== */
+/*     * * * * * *     */
+/* =================== */
 
 .btn-container {
   display: grid;
@@ -82,6 +92,10 @@ body {
 .row5 {
   grid-template-columns: repeat(4, 1fr);
 }
+
+/* =================== */
+/*     * * * * * *     */
+/* =================== */
 
 .copy {
   font-size: 18px;
