@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background: #585869;
+  font-family: monospace;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.outer {
+  margin: 4em auto;
+  width: 60%;
+  max-height: 85vh;
+  padding: 10px;
+  background: #afaea1;
+  display: flex;
+  flex-direction: column;
+  border: 4px solid black;
+  border-radius: 18px;
+}
+
+.display-container {
+  background: #a2a1af;
+  padding: 8px;
+  letter-spacing: 1px;
+  border: 3px solid black;
+  border-radius: 11px;
+}
+
+.upper-display {
+  font-size: 18px;
+  margin-bottom: 5px;
+  height: 1em;
+  text-align: end;
+  padding-right: 10px;
+}
+
+.main-display {
+  font-size: 36px;
+  height: 1.25em;
+  text-align: end;
+  padding-right: 10px;
+}
+
+.btn-container {
+  display: grid;
+  gap: 9px;
+  margin-top: 1em;
+}
+
+.btn {
+  height: 47px;
+  font-size: 2em;
+  background: #c8c7cf;
+  border: 3px solid black;
+  border-radius: 9px;
+}
+
+.btn2 {
+  padding: 4px 0;
+}
+
+.row {
+  display: grid;
+  gap: 8px;
+}
+
+.row1 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.row2,
+.row3,
+.row4,
+.row5 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.copy {
+  font-size: 18px;
+  font-weight: bold;
+}
