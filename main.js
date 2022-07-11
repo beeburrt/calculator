@@ -1,61 +1,61 @@
 const topDisplay = document.querySelector(".top-display");
 const mainDisplay = document.querySelector(".main-display");
 
-let memory = [];
-
-let firstValue;
-let nextValue;
-let result;
-
-topDisplay.textContent = "";
-mainDisplay.textContent = "";
-
 const clearBtn = document.querySelector(".clear");
+clearBtn.addEventListener("click", clear);
 
 const deleteBtn = document.querySelector(".delete");
+deleteBtn.addEventListener("click", back);
 
 const numberBtns = Array.from(document.getElementsByClassName("number"));
 const operatorBtns = Array.from(document.getElementsByClassName("operator"));
 
-console.log(numberBtns);
+let currentValue;
+let previousValue;
+let operator;
+let result;
+let memArray = [];
 
-clearBtn.addEventListener("click", clear);
-
-deleteBtn.addEventListener("click", back);
+topDisplay.textContent = "";
+mainDisplay.textContent = "";
 
 numberBtns.forEach((button) => {
   button.addEventListener("click", (e) => {
-    memory.push(button.innerText);
-    // updateDisplay(button);
-    console.log(memory);
+    e.preventDefault();
+    mainDisplay.innerText += button.innerText;
+    memArray.push(button.innerText);
+    previousValue = mainDisplay.innerText;
+    console.log(memArray);
   });
 });
 
 operatorBtns.forEach((button) => {
-  button.addEventListener("click", () => {
-    updateDisplay(button);
+  button.addEventListener("click", (e) => {
+    // updateDisplay(button);
+    console.log(e.target);
   });
 });
 
-function clear(e) {
+function clear() {
   topDisplay.textContent = "";
   mainDisplay.textContent = "";
 }
 
-function back(e) {
-  memory.pop();
-  console.log(memory);
+function back() {
+  memArray.pop();
+  currentValue = memArray.join("");
+  console.log(currentValue);
+  mainDisplay.innerText = currentValue;
 }
 
 function updateDisplay(button) {
-  topDisplay.textContent = memory.values;
   mainDisplay.innerText += button.innerText;
 }
 
 function calculate() {
-  // if (operator === "+") {
-
-  // }
-
   mainDisplay.innerText = result;
+}
+
+function add() {
+  return Number(previousValue) + Number(currentValue);
 }
