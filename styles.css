@@ -34,7 +34,6 @@ body {
 .display-container {
   background: #a2a1af;
   padding: 8px;
-  letter-spacing: 1px;
   border: 3px solid black;
   border-radius: 11px;
 }
@@ -50,7 +49,6 @@ body {
 .main-display {
   font-size: 40px;
   font-weight: 500;
-  letter-spacing: 2px;
   height: 1.25em;
   text-align: end;
   padding-right: 10px;
@@ -69,10 +67,19 @@ body {
 
 .btn {
   height: 47px;
-  font-size: 2em;
+  font-size: 1.75em;
   background: #c8c7cf;
   border: 3px solid black;
   border-radius: 9px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #ddd;
+}
+
+.btn:active {
+  transform: translateY(0.06em);
 }
 
 .btn2 {
