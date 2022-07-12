@@ -18,10 +18,11 @@ let historyArray = [];
 topDisplay.textContent = "";
 mainDisplay.textContent = "0";
 
-const numberBtns = Array.from(document.getElementsByClassName("number"));
+const numberBtns = document.getElementsByClassName("number");
+const numberBtnsArr = [...numberBtns];
 const dotBtn = document.querySelector(".dot");
 
-numberBtns.forEach((button) => {
+numberBtnsArr.forEach((button) => {
   button.addEventListener("click", () => {
     const { innerText: btnValue } = button;
     if (mainDisplay.textContent == "0" && btnValue != ".") {
@@ -36,9 +37,10 @@ numberBtns.forEach((button) => {
   });
 });
 
-const operatorBtns = Array.from(document.getElementsByClassName("operator"));
+const operatorBtns = document.getElementsByClassName("operator");
+const operatorBtnsArr = [...operatorBtns];
 
-operatorBtns.forEach((button) => {
+operatorBtnsArr.forEach((button) => {
   button.addEventListener("click", (e) => {
     const { innerText: btnValue } = button;
     if (
