@@ -10,12 +10,13 @@
 
 body {
   height: 100vh;
-  background: #585869;
+  background: radial-gradient(white, rgb(100, 1, 100));
   font-family: monospace;
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .outer {
@@ -24,9 +25,10 @@ body {
   padding: 10px;
   padding-bottom: 13px;
   background: #afaea1;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.35);
   display: flex;
   flex-direction: column;
-  border: 4px solid black;
+  border: 3px solid black;
   border-radius: 18px;
   flex-basis: 100%;
 }
@@ -37,22 +39,25 @@ body {
   border: 3px solid black;
   border-radius: 11px;
   overflow: hidden;
+  box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
 }
 
 .top-display {
   font-size: 18px;
   margin-bottom: 5px;
   height: 1em;
-  text-align: end;
-  padding-right: 10px;
 }
 
 .main-display {
-  font-size: 40px;
+  font-size: 38px;
   font-weight: 500;
   height: 1.25em;
+}
+
+.display {
   text-align: end;
   padding-right: 10px;
+  width: 100%;
 }
 
 /* =================== */
@@ -71,6 +76,7 @@ body {
   font-size: 1.75em;
   background: #c8c7cf;
   border: 3px solid black;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
   border-radius: 9px;
   cursor: pointer;
 }
@@ -101,13 +107,4 @@ body {
 .row4,
 .row5 {
   grid-template-columns: repeat(4, 1fr);
-}
-
-/* =================== */
-/*     * * * * * *     */
-/* =================== */
-
-.copy {
-  font-size: 18px;
-  font-weight: bold;
 }

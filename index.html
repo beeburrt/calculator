@@ -5,50 +5,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculator</title>
-    <link rel="stylesheet" href="styles.css" />
-    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./main.js" defer></script>
   </head>
 
   <body>
     <div class="calculator">
       <div class="outer">
         <div class="display-container">
-          <p class="top-display">XXX</p>
-          <p class="main-display">XXX</p>
+          <p class="top-display display"></p>
+          <p class="main-display display">0</p>
         </div>
 
         <div class="btn-container">
           <div class="row row1">
-            <button class="btn btn2 clear">CLEAR</button>
-            <button class="btn btn2 delete">DELETE</button>
+            <button type="button" class="btn btn2 clear">CLEAR</button>
+            <button type="button" class="btn btn2 delete">DELETE</button>
           </div>
 
           <div class="row row2">
-            <button class="btn seven number">7</button>
-            <button class="btn eight number">8</button>
-            <button class="btn nine number">9</button>
-            <button class="btn divide operator">÷</button>
+            <button type="button" class="btn number">7</button>
+            <button type="button" class="btn number">8</button>
+            <button type="button" class="btn number">9</button>
+            <button type="button" class="btn operator" value="/">÷</button>
           </div>
 
           <div class="row row3">
-            <button class="btn four number">4</button>
-            <button class="btn five number">5</button>
-            <button class="btn six number">6</button>
-            <button class="btn times operator">×</button>
+            <button type="button" class="btn number">4</button>
+            <button type="button" class="btn number">5</button>
+            <button type="button" class="btn number">6</button>
+            <button type="button" class="btn operator" value="*">×</button>
           </div>
 
           <div class="row row4">
-            <button class="btn one number">1</button>
-            <button class="btn two number">2</button>
-            <button class="btn three number">3</button>
-            <button class="btn minus operator">−</button>
+            <button type="button" class="btn number">1</button>
+            <button type="button" class="btn number">2</button>
+            <button type="button" class="btn number">3</button>
+            <button type="button" class="btn operator" value="-">−</button>
           </div>
 
           <div class="row row5">
-            <button class="btn dot number">.</button>
-            <button class="btn zero number">0</button>
-            <button class="btn equals">=</button>
-            <button class="btn plus operator">+</button>
+            <button type="button" class="btn dot number" value=".">.</button>
+            <button type="button" class="btn zero number">0</button>
+            <button type="button" class="btn equals" value="=">=</button>
+            <button type="button" class="btn plus operator" value="+">+</button>
           </div>
         </div>
       </div>

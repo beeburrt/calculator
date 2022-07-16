@@ -7,97 +7,113 @@ clearBtn.addEventListener("click", clear);
 const deleteBtn = document.querySelector(".delete");
 deleteBtn.addEventListener("click", back);
 
-const operators = ["÷", "×", "−", "=", "+", "."];
+const equalsButton = document.querySelector(".equals");
+equalsButton.addEventListener("click", () => {
+  calculateResult();
+  updateDisplay();
+});
 
 let currentValue = "";
 let previousValue = "";
 let operator = "";
-let result;
-let historyArray = [];
+let operation;
 
-topDisplay.textContent = "";
-mainDisplay.textContent = "0";
+topDisplay.innerText = "";
+mainDisplay.innerText = "0";
 
 const numberBtns = document.getElementsByClassName("number");
 const numberBtnsArr = [...numberBtns];
+
 const dotBtn = document.querySelector(".dot");
 
 numberBtnsArr.forEach((button) => {
-  button.addEventListener("click", () => {
-    const { innerText: btnValue } = button;
-    if (mainDisplay.textContent == "0" && btnValue != ".") {
-      mainDisplay.textContent = " ";
+  button.addEventListener("click", (e) => {
+    if (currentValue === 0 || currentValue === "0") {
+      currentValue = "";
     }
-    if (!(btnValue == ".") || !historyArray.includes(".")) {
-      mainDisplay.innerText += button.innerText;
-      historyArray.push(button.innerText);
-      currentValue = mainDisplay.innerText;
-      console.log();
-    }
+
+    if (button.textContent == "." && currentValue.includes(".")) return;
+    currentValue += button.textContent;
+
+    updateDisplay();
   });
 });
+
+const updateDisplay = () => {
+  mainDisplay.innerText = currentValue;
+  topDisplay.innerText = previousValue;
+};
 
 const operatorBtns = document.getElementsByClassName("operator");
 const operatorBtnsArr = [...operatorBtns];
 
 operatorBtnsArr.forEach((button) => {
   button.addEventListener("click", (e) => {
-    const { innerText: btnValue } = button;
-    if (
-      historyArray.includes("÷") ||
-      historyArray.includes("×") ||
-      historyArray.includes("−") ||
-      historyArray.includes("=") ||
-      historyArray.includes("+") ||
-      historyArray.includes(".")
-    ) {
-      // button.innerText = "";
-      console.log(btnValue);
-    }
-    if (
-      !(
-        historyArray.includes("÷") ||
-        historyArray.includes("×") ||
-        historyArray.includes("−") ||
-        historyArray.includes("=") ||
-        historyArray.includes("+") ||
-        historyArray.includes(".")
-      )
-    ) {
-      mainDisplay.innerText += button.innerText;
-      historyArray.push(btnValue);
-    }
+    if (currentValue === "") return;
+    if (button.textContent == "÷") operation = "/";
+    if (button.textContent == "×") operation = "*";
+    if (button.textContent == "−") operation = "-";
+    if (button.textContent == "+") operation = "+";
+    operate();
+    updateDisplay();
   });
 });
 
+function operate() {
+  if (currentValue === "") return;
+  if (previousValue !== "") {
+    calculateResult();
+  }
+  if (operation === "/") operation = "÷";
+  if (operation === "*") operation = "×";
+  previousValue = `${currentValue} ${operation}`;
+  currentValue = "";
+}
+
 function clear() {
-  topDisplay.textContent = "";
-  mainDisplay.textContent = "0";
-  historyArray = [];
+  currentValue = 0;
+  previousValue = "";
+  operation = null;
+  updateDisplay();
 }
 
 function back() {
-  historyArray.pop();
-  currentValue = historyArray.join("");
-  console.log(currentValue);
-  mainDisplay.innerText = currentValue;
-  if (currentValue == "" || currentValue == ".") {
-    mainDisplay.textContent = "0";
-    historyArray.pop();
-    console.log(historyArray);
+  let temp;
+  if (currentValue == "can't divide by zero!") {
+    currentValue = 0;
+    temp = currentValue;
+  } else {
+    temp = currentValue.toString().slice(0, -1);
+  }
+
+  if (temp === "" || temp === 0) {
+    temp = 0;
+    currentValue = temp;
+    updateDisplay();
+  } else {
+    currentValue = parseFloat(temp);
+    updateDisplay();
   }
 }
 
-function updateDisplay(button) {
-  mainDisplay.textContent += button.innerText;
-}
+function calculateResult() {
+  let current = parseFloat(currentValue);
+  let previous = parseFloat(previousValue);
+  let result;
+  if (isNaN(current) || isNaN(previous)) return;
+  if (operation == "-") {
+    result = previous - current;
+  } else if (operation == "+") {
+    result = previous + current;
+  } else if (operation == "×") {
+    result = previous * current;
+  } else if (operation == "÷" && current === 0) {
+    result = "can't divide by zero!";
+  } else if (operation == "÷") {
+    result = previous / current;
+  }
 
-function calculate() {
-  currentValue = parseFloat(currentValue);
-  previousValue = parseFloat(previousValue);
-  currentValue = mainDisplay.textContent = result;
-}
-
-function add() {
-  return Number(previousValue) + Number(currentValue);
+  currentValue = result;
+  operation = null;
+  previousValue = "";
 }
