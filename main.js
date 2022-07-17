@@ -1,6 +1,9 @@
 const topDisplay = document.querySelector(".top-display");
 const mainDisplay = document.querySelector(".main-display");
 
+topDisplay.innerText = "";
+mainDisplay.innerText = "0";
+
 const clearBtn = document.querySelector(".clear");
 clearBtn.addEventListener("click", clear);
 
@@ -17,9 +20,6 @@ let currentValue = "";
 let previousValue = "";
 let operator = "";
 let operation;
-
-topDisplay.innerText = "";
-mainDisplay.innerText = "0";
 
 const numberBtns = document.getElementsByClassName("number");
 const numberBtnsArr = [...numberBtns];
@@ -39,11 +39,6 @@ numberBtnsArr.forEach((button) => {
   });
 });
 
-const updateDisplay = () => {
-  mainDisplay.innerText = currentValue;
-  topDisplay.innerText = previousValue;
-};
-
 const operatorBtns = document.getElementsByClassName("operator");
 const operatorBtnsArr = [...operatorBtns];
 
@@ -58,6 +53,11 @@ operatorBtnsArr.forEach((button) => {
     updateDisplay();
   });
 });
+
+function updateDisplay() {
+  mainDisplay.innerText = currentValue;
+  topDisplay.innerText = previousValue;
+}
 
 function operate() {
   if (currentValue === "") return;
